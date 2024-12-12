@@ -43,12 +43,6 @@
         <ul id="reservation-data"></ul>
         <button onclick="hideReservations()">Close</button>
     </div>
-    <button id="view-messages">View Contact Messages</button>
-<div id="messages-list" style="display: none;">
-    <h3>Contact Messages</h3>
-    <ul id="messages"></ul>
-</div>
-
 
     <footer>
         <h3>Contact Us</h3>
@@ -58,7 +52,17 @@
             <textarea id="contact-message" name="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send Message</button>
         </form>            
-    </footer>    
+
+        <div class="button-container">
+            <button id="view-messages">View Messages</button>
+        </div>
+    </footer>  
+
+    <div id="messages-list" style="display: none;">
+        <h3>Contact Messages</h3>
+        <ul id="messages"></ul>
+        <button onclick="document.getElementById('messages-list').style.display = 'none';">Close</button>
+    </div>
 
     <script src="script.js"></script>
 </body>

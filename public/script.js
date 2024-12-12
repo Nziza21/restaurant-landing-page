@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactEmail = document.getElementById('contact-email');
     const contactMessage = document.getElementById('contact-message');
 
-    // Toggle reservation form visibility
     reserveButton.addEventListener('click', function () {
         if (reservationForm.style.display === 'none' || reservationForm.style.display === '') {
             reservationForm.style.display = 'block';
@@ -41,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.reset();
     });
 
-    // Handle reservation form submission
+    // Reservation form submission
     const reservationFormElement = document.getElementById('reservationForm');
     reservationFormElement.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
     viewMessagesButton.addEventListener('click', function () {
         const contactMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];
 
-        // Clear the list before adding messages
         messages.innerHTML = '';
 
         if (contactMessages.length === 0) {
