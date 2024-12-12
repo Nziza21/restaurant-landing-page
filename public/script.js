@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const reservationForm = document.getElementById('reservation-form');
     const contactForm = document.getElementById('contact-form');
     const contactEmail = document.getElementById('contact-email');
-    const contactNumber = document.getElementById('contact-number');
-    const comment = document.getElementById('comment');
-    const reservationFormElement = document.getElementById('reservationForm');
+    const contactMessage = document.getElementById('contact-message');  // Updated to 'contact-message' instead of 'contactNumber'
 
     // Toggle reservation form visibility
     reserveButton.addEventListener('click', function () {
@@ -31,18 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Validate phone number (basic check for digits only)
-        const phonePattern = /^\d+$/;
-        if (!phonePattern.test(contactNumber.value)) {
-            alert('Please enter a valid phone number.');
-            return;
-        }
-
         // Save contact data to localStorage
         const contactData = {
             email: contactEmail.value,
-            number: contactNumber.value,
-            comment: comment.value,
+            message: contactMessage.value,  // Updated to capture message field
         };
 
         let contactMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];
@@ -54,10 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Handle reservation form submission
+    const reservationFormElement = document.getElementById('reservationForm');
     reservationFormElement.addEventListener('submit', async function (event) {
         event.preventDefault();  // Prevent page reload
 
-        // Gather form data
+        // Gather form data for reservation
         const name = reservationFormElement.querySelector('[name="name"]').value;
         const email = reservationFormElement.querySelector('[name="email"]').value;
         const date = reservationFormElement.querySelector('[name="date"]').value;
