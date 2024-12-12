@@ -6,7 +6,7 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
-// In-memory array to store reservations
+// In memory array to store reservations
 const reservations = [];
 
 app.use(bodyParser.json());
