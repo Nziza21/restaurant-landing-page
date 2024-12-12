@@ -24,16 +24,15 @@
             displayReservations();
         };
 
-        // Function to display reservations list
         function displayReservations() {
             const reservationsList = document.getElementById('reservations-list');
             const reservationData = JSON.parse(localStorage.getItem('reservations')) || [];
             
             if (reservationData.length > 0) {
-                reservationsList.style.display = 'block';  // Show the reservations list
+                reservationsList.style.display = 'block';  
 
                 const reservationListElement = document.getElementById('reservation-data');
-                reservationListElement.innerHTML = ''; // Clear previous list items
+                reservationListElement.innerHTML = ''; 
 
                 reservationData.forEach(function (reservation) {
                     const listItem = document.createElement('li');
