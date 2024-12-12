@@ -31,14 +31,17 @@
             <label for="people">Number of People:</label>
             <input type="number" id="reservation-people" name="people" required>
 
-            <button type="submit">Confirm Reservation</button>
-            <button onclick="window.location.href='view-reservations.html'">View Reservations</button>
+            <div class="button-container">
+                <button type="submit">Confirm Reservation</button>
+                <button type="button" onclick="viewReservations()">View Reservations</button>
+            </div>
         </form>
     </div>
 
     <div id="reservations-list" style="display: none;">
         <h3>List of Reservations</h3>
         <ul id="reservation-data"></ul>
+        <button onclick="hideReservations()">Close</button>
     </div>
 
     <footer>

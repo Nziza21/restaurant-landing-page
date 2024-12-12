@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactEmail = document.getElementById('contact-email');
     const contactMessage = document.getElementById('contact-message');
 
+    // Toggle reservation form visibility
     reserveButton.addEventListener('click', function () {
         if (reservationForm.style.display === 'none' || reservationForm.style.display === '') {
             reservationForm.style.display = 'block';
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // Handle contact form submission
     contactForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         contactForm.reset();
     });
 
+    // Handle reservation form submission
     const reservationFormElement = document.getElementById('reservationForm');
     reservationFormElement.addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -63,5 +66,29 @@ document.addEventListener('DOMContentLoaded', function () {
         alert(`Reservation confirmed for ${name}. We look forward to hosting you on ${date} at ${time} for ${guests} people.`);
 
         reservationFormElement.reset();
+    });
+
+    // View Contact Messages
+    const viewMessagesButton = document.getElementById('view-messages');
+    const messagesList = document.getElementById('messages-list');
+    const messages = document.getElementById('messages');
+
+    viewMessagesButton.addEventListener('click', function () {
+        const contactMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+
+        // Clear the list before adding messages
+        messages.innerHTML = '';
+
+        if (contactMessages.length === 0) {
+            messages.innerHTML = '<li>No messages available.</li>';
+        } else {
+            contactMessages.forEach((message, index) => {
+                const messageItem = document.createElement('li');
+                messageItem.textContent = `Message ${index + 1}: Email - ${message.email}, Message - ${message.message}`;
+                messages.appendChild(messageItem);
+            });
+        }
+
+        messagesList.style.display = 'block';
     });
 });

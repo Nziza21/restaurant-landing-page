@@ -6,22 +6,29 @@ const path = require("path");
 const app = express();
 const PORT = 3000;
 
+// In-memory array to store reservations
+const reservations = [];
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Route to handle new reservations
 app.post("/reserve", (req, res) => {
     const { name, email, date, time, people } = req.body;
-    console.log(`Reservation received:
-      Name: ${name}
-      Email: ${email}
-      Date: ${date}
-      Time: ${time}
-      People: ${people}`);
+    const newReservation = { name, email, date, time, people };
+    reservations.push(newReservation);
+
+    console.log("New Reservation Added:", newReservation);
 
     return res.status(200).json({
-        message: `Reservation confirmed for ${name}. We look forward to hosting you on ${date} at ${time} for ${people} people.`
+        message: `Reservation confirmed for ${name}. We look forward to hosting you on ${date} at ${time} for ${people} people.`,
     });
+});
+
+// Route to fetch all reservations
+app.get("/reservations", (req, res) => {
+    return res.status(200).json(reservations);
 });
 
 app.listen(PORT, () => {
