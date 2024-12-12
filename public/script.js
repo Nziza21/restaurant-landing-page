@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const reservationForm = document.getElementById('reservation-form');
     const contactForm = document.getElementById('contact-form');
     const contactEmail = document.getElementById('contact-email');
-    const contactMessage = document.getElementById('contact-message');  // Updated to 'contact-message' instead of 'contactNumber'
+    const contactMessage = document.getElementById('contact-message'); // This is for the message field in your form
 
     // Toggle reservation form visibility
     reserveButton.addEventListener('click', function () {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Save contact data to localStorage
         const contactData = {
             email: contactEmail.value,
-            message: contactMessage.value,  // Updated to capture message field
+            message: contactMessage.value,  // Capture message field
         };
 
         let contactMessages = JSON.parse(localStorage.getItem('contactMessages')) || [];

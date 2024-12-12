@@ -130,7 +130,17 @@ footer {
     margin-bottom: 5px;
     font-weight: bold;
 }
+#contact-message {
+    width: 100%; /* Full width of the form */
+    height: 150px; /* Adjust the height of the textarea */
+    padding: 10px; /* Add padding for better readability */
+    font-size: 14px; /* Adjust font size */
+    border-radius: 5px; /* Round corners */
+    border: 1px solid #ccc; /* Light border */
+    resize: vertical; /* Allows the user to resize vertically */
+}
 
+    
 #contact-form input::placeholder,
 #contact-form textarea::placeholder {
     color: #888;
