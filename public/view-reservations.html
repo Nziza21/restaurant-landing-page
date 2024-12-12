@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Reservations</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>View All Reservations</h1>
+        <button onclick="window.location.href='index.html'">Back to Landing Page</button>
+    </header>
+
+    <!-- List of Reservations -->
+    <div id="reservations-list">
+        <h3>List of Reservations</h3>
+        <ul id="reservation-data"></ul> <!-- This is where the reservation list will appear -->
+    </div>
+
+    <script>
+        // Display reservations only when on this page
+        window.onload = function() {
+            displayReservations();
+        };
+
+        // Function to display reservations list
+        function displayReservations() {
+            const reservationsList = document.getElementById('reservations-list');
+            const reservationData = JSON.parse(localStorage.getItem('reservations')) || [];
+            
+            if (reservationData.length > 0) {
+                reservationsList.style.display = 'block';  // Show the reservations list
+
+                const reservationListElement = document.getElementById('reservation-data');
+                reservationListElement.innerHTML = ''; // Clear previous list items
+
+                reservationData.forEach(function (reservation) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `Reservation for ${reservation.name} on ${reservation.date} at ${reservation.time} for ${reservation.guests} people.`;
+                    reservationListElement.appendChild(listItem);
+                });
+            } else {
+                reservationsList.innerHTML = "<p>No reservations yet.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
